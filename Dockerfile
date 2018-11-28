@@ -19,4 +19,4 @@ ADD . /app/
 RUN if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
 EXPOSE 8092
 VOLUME /app/mxs/assets
-ENTRYPOINT ["uwsgi", "--ini", "/app/uwsgi.ini"]
+ENTRYPOINT ["/usr/local/bin/uwsgi", "--ini", "/app/uwsgi.ini"]
