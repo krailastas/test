@@ -52,7 +52,6 @@ LOCAL_APPS = (
 )
 
 FILE_UPLOAD_HANDLERS = (
-    'progressbarupload.uploadhandler.ProgressBarUploadHandler',
     'django.core.files.uploadhandler.MemoryFileUploadHandler',
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 )

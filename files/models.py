@@ -69,6 +69,10 @@ class FileConfiguration(AbstractName):
         choices=TypeOS.TYPE_CHOICES, default=TypeOS.ANDROID
     )
 
+    class Meta:
+        verbose_name = 'File configurations (FC)'
+        verbose_name_plural = 'File configurations (FC)'
+
 
 class StimulusConfiguration(AbstractName):
     type = models.IntegerField(
@@ -85,6 +89,10 @@ class StimulusConfiguration(AbstractName):
         blank=True, null=True
     )
 
+    class Meta:
+        verbose_name = 'Stimulus configurations (SC)'
+        verbose_name_plural = 'Stimulus configurations (SC)'
+
 
 def _createId():
     return hexlify(os.urandom(4)).decode('utf-8')
@@ -98,8 +106,8 @@ class QuestionnaireConfiguration(AbstractName):
     uniq_key = models.CharField(max_length=256, primary_key=True, default=_createId)
 
     class Meta:
-        verbose_name = 'Stimulus Instance (SA)'
-        verbose_name_plural = 'Stimulus Instance (SA)'
+        verbose_name = 'Stimulus Instance (SI)'
+        verbose_name_plural = 'Stimulus Instance (SI)'
 
 
 class DataTrack(models.Model):
