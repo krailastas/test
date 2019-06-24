@@ -88,6 +88,7 @@ class StimulusConfiguration(AbstractName):
         limit_choices_to={'file_configuration__type_os': TypeOS.IOS},
         blank=True, null=True
     )
+    
 
     class Meta:
         verbose_name = 'Stimulus configurations (SC)'
@@ -130,6 +131,40 @@ class DataRecord(models.Model):
         related_name='questionnaire_datarecords',
         blank=True, null=True, on_delete=models.CASCADE
     )
+
+
+class Company(models.Model):
+    full_name = models.CharField(max_length=255, blank=True)
+    short_name = models.CharField(max_length=50, blank=True)
+
+    class Meta:
+        verbose_name = 'Company'
+        verbose_name_plural = 'Companies'
+
+    def __str__(self):
+        return self.full_name
+
+
+class Solution(models.Model):
+    full_name = models.CharField(max_length=255, blank=True)
+    short_name = models.CharField(max_length=50, blank=True)
+
+    class Meta:
+        verbose_name = 'Solution'
+        verbose_name_plural = 'Solutions'
+
+    def __str__(self):
+        return self.full_name
+
+
+class Job(models.Model):
+    solution = models.ForeignKey('files.Solution', on_delete=models.CASCADE)
+    research_company = models.ForeignKey('files.Company', on_delete=models.CASCADE)
+    respondent_limit = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        verbose_name = 'Job'
+        verbose_name_plural = 'Jobs'
 
 
 # class Locations(models.Model):

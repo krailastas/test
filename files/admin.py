@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (DataTrack, FileConfiguration, Files,
-                     QuestionnaireConfiguration, StimulusConfiguration)
+                     QuestionnaireConfiguration, StimulusConfiguration, Company, Solution, Job)
 
 
 class FileConfigurationAdmin(admin.ModelAdmin):
@@ -49,7 +49,31 @@ class DataTrackAdmin(admin.ModelAdmin):
     ordering = ('id',)
 
 
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'full_name', 'short_name'
+    )
+    ordering = ('id',)
+
+
+class SolutionAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'full_name', 'short_name'
+    )
+    ordering = ('id',)
+
+
+class JobAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'solution', 'research_company', 'respondent_limit'
+    )
+    ordering = ('id',)
+
+
 admin.site.register(Files, FilesAdmin)
+admin.site.register(Company, CompanyAdmin)
+admin.site.register(Job, JobAdmin)
+admin.site.register(Solution, SolutionAdmin)
 admin.site.register(FileConfiguration, FileConfigurationAdmin)
 admin.site.register(StimulusConfiguration, StimulusConfigurationAdmin)
 admin.site.register(QuestionnaireConfiguration, QuestionnaireConfigurationAdmin)
